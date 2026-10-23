@@ -52,14 +52,12 @@ h2 span{font:500 1rem 'JetBrains Mono',monospace;color:var(--primary)}
 .project h3{margin-top:0}
 .tags{display:flex;gap:.5rem;margin-top:.8rem}
 .tags span{font:500 .8rem 'JetBrains Mono',monospace;padding:.2rem .7rem;border-radius:999px;background:color-mix(in srgb,var(--primary) 15%,transparent);color:var(--primary)}
-.cv{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2rem}
-.cv-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:1.2rem}
-.cv-head h3{margin:0;font-size:1.5rem}
-.cv h4{margin:1.8rem 0 .5rem;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--primary)}
-.cv p,.cv li{color:var(--muted);margin:.3rem 0}
-.cv ul{padding-left:1.2rem;margin:0}
-.cv b,.cv strong{color:var(--text)}
-.timeline .item{border-left:3px solid var(--primary);padding-left:1rem;display:flex;flex-direction:column}
+.section-intro{color:var(--muted);margin:-1rem 0 1.8rem;max-width:640px}
+.repo{display:flex;flex-direction:column}
+.repo .tags{flex-wrap:wrap;margin-top:1rem}
+.repo-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:auto;padding-top:1.2rem}
+.repo-links .btn{padding:.55rem 1.1rem;font-size:.85rem}
+.more{margin-top:2rem;margin-bottom:0}
 .muted{color:var(--muted)}
 .center{text-align:center;margin-bottom:1.5rem;color:var(--muted)}
 footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);color:var(--muted)}
@@ -76,5 +74,4 @@ footer{text-align:center;padding:2.5rem 1rem;border-top:1px solid var(--border);
   .about-grid{grid-template-columns:1fr}
   section{padding:3.5rem 0}
 }
-@media print{.nav,.hero,footer,section:not(#cv){display:none}.reveal{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
