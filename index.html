@@ -1,59 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarthak Budhodkar</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarthak Budhodkar | B.Tech AI & Data Science</title>
+<meta name="description" content="Portfolio and CV of Sarthak Budhodkar, B.Tech student in Artificial Intelligence & Data Science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
-        </button>
-    </header>
-    <main>
-        <section id="hero">
-            <h1>Sarthak Budhodkar</h1>
-            <p class="tagline">Exploring the intersection of technology and creativity.</p>
-        </section>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>A curious mind with a passion for innovation. Currently 17 and working to develop my skills in programming with the help of AI. My goal is to help humanity develop better AI integrated softwares & games as well as helping in development of world's first AGI.</p>
-        </section>
-        <section id="logos">
-            <h2>My designs</h2>
-            <div class="logos-grid">
-                <div class="logo-item"><img src="/Images/logo1.png" alt="Logo 1"></div>
-                <div class="logo-item"><img src="/Images/logo2.png" alt="Logo 2"></div>
-                <div class="logo-item"><img src="/Images/logo3.png" alt="Logo 3"></div>
-                <div class="logo-item"><img src="/Images/logo4.png" alt="Logo 4"></div>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <a href="mailto:sarthakbudhodkar34@gmail.com" class="email-link">
-                <i class="fas fa-envelope"></i> sarthakbudhodkar34@gmail.com
-            </a>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://github.com/S-a-r-t-h-a-k" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/SBudhodkar" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/sa43hak" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p>&copy; 2025 Sarthak Budhodkar. All rights reserved.</p>
+<header class="nav">
+  <a href="#home" class="logo">SB<span>.</span></a>
+  <nav id="menu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <button id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+    <button id="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div class="glow"></div>
+    <p class="eyebrow reveal">Hi, I'm</p>
+    <h1 class="reveal">Sarthak Budhodkar</h1>
+    <p class="typed reveal"><span id="typed"></span><span class="cursor">|</span></p>
+    <p class="lead reveal">B.Tech student in Artificial Intelligence & Data Science, building at the intersection of technology and creativity.</p>
+    <div class="cta reveal">
+      <a href="#cv" class="btn primary">View CV</a>
+      <a href="Sarthak-Budhodkar-CV.pdf" class="btn ghost" download><i class="fas fa-download"></i> Download CV</a>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <h2><span>01</span> About Me</h2>
+    <div class="about-grid">
+      <p>A curious mind with a passion for innovation. I'm a first-year B.Tech student at Parul University (PIET), developing my programming skills with the help of AI. My goal is to build better AI-integrated software and games, and to contribute to the development of the world's first AGI.</p>
+      <ul class="facts">
+        <li><i class="fas fa-graduation-cap"></i> B.Tech AI & Data Science</li>
+        <li><i class="fas fa-location-dot"></i> Vadodara, Gujarat</li>
+        <li><i class="fas fa-calendar"></i> Graduating 2030</li>
+        <li><i class="fas fa-bullseye"></i> Software, Web & AI</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <h2><span>02</span> Skills</h2>
+    <div class="cards">
+      <article class="card"><i class="fas fa-code"></i><h3>C Programming</h3><p>Arrays, pointers, sorting problems and logical problem-solving.</p></article>
+      <article class="card"><i class="fab fa-html5"></i><h3>Web Development</h3><p>HTML and CSS for clean, responsive pages.</p></article>
+      <article class="card"><i class="fab fa-git-alt"></i><h3>Dev Tools</h3><p>Git and GitHub fundamentals.</p></article>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <h2><span>03</span> Projects</h2>
+    <article class="card project">
+      <div>
+        <h3>Basic Home Page</h3>
+        <p>A home page built with HTML and CSS to practice foundational web design and page structuring.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span></div>
+      </div>
+      <a class="btn ghost" href="https://sarthak-budhodkar.github.io/Home-page/" target="_blank" rel="noopener">Live Project <i class="fas fa-arrow-up-right-from-square"></i></a>
+    </article>
+  </section>
+
+  <section id="cv" class="reveal">
+    <h2><span>04</span> Curriculum Vitae</h2>
+    <div class="cv">
+      <div class="cv-head">
+        <div>
+          <h3>Sarthak Santosh Budhodkar</h3>
+          <p class="muted">B.Tech Student | Artificial Intelligence & Data Science</p>
         </div>
-    </footer>
-    <script src="script.js"></script>
+        <a href="Sarthak-Budhodkar-CV.pdf" class="btn primary" download><i class="fas fa-download"></i> PDF</a>
+      </div>
+
+      <h4>Career Objective</h4>
+      <p>First-year B.Tech student in Artificial Intelligence and Data Science with foundational knowledge of C programming, arrays, pointers, sorting techniques, and web designing. Eager to strengthen programming and problem-solving skills through practical projects and continuous learning.</p>
+
+      <h4>Education</h4>
+      <div class="timeline">
+        <div class="item">
+          <strong>Bachelor of Technology (B.Tech), Artificial Intelligence & Data Science</strong>
+          <span class="muted">Parul University, PIET | Expected Graduation: 2030</span>
+        </div>
+      </div>
+
+      <h4>Technical Skills</h4>
+      <ul>
+        <li><b>Programming Language:</b> C</li>
+        <li><b>C Programming:</b> Arrays, pointers, basic sorting problems, logical problem-solving</li>
+        <li><b>Web Development:</b> HTML and CSS</li>
+        <li><b>Development Tools:</b> Basic Git and GitHub knowledge</li>
+      </ul>
+
+      <h4>Projects</h4>
+      <ul>
+        <li><b>Basic Home Page:</b> Created with HTML and CSS to practice web-designing and page-structuring. <a href="https://sarthak-budhodkar.github.io/Home-page/" target="_blank" rel="noopener">Live project</a></li>
+      </ul>
+
+      <h4>Problem-Solving Skills</h4>
+      <ul>
+        <li>Solve basic sorting problems using C programming.</li>
+        <li>Apply arrays and pointers to fundamental programming tasks.</li>
+        <li>Develop logical thinking through programming practice.</li>
+      </ul>
+
+      <h4>Career Interests</h4>
+      <p>C Programming, Web Development, and Software Development.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2><span>05</span> Contact</h2>
+    <p class="center">Have an idea or opportunity? Let's talk.</p>
+    <div class="center">
+      <a href="mailto:sarthakbudhodkar34@gmail.com" class="btn primary"><i class="fas fa-envelope"></i> sarthakbudhodkar34@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="social">
+    <a href="https://github.com/Sarthak-Budhodkar" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://x.com/SBudhodkar" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/sa43hak" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+  <p>&copy; 2026 Sarthak Budhodkar. All rights reserved.</p>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
