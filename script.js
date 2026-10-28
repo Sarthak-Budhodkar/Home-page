@@ -1,53 +1,130 @@
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
-  const toggle = document.getElementById('theme-toggle');
-  const icon = toggle.querySelector('i');
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('i');
+  const menu = document.getElementById('menu');
+  const menuToggle = document.getElementById('menu-toggle');
 
-  // Theme
-  const setIcon = () => icon.className = body.classList.contains('light') ? 'fas fa-sun' : 'fas fa-moon';
-  let saved = null;
-  try { saved = localStorage.getItem('theme'); } catch (e) {}
-  if (saved === 'light' || (!saved && matchMedia('(prefers-color-scheme: light)').matches)) body.classList.add('light');
-  setIcon();
+  initializeTheme(body, themeToggle, themeIcon);
+  initializeMenu(menu, menuToggle);
+  initializeRevealAnimations();
+  initializeSectionNavigation(menu);
+  initializeTypewriter();
+});
+
+function initializeTheme(body, toggle, icon) {
+  let savedTheme = null;
+
+  try {
+    savedTheme = localStorage.getItem('theme');
+  } catch (error) {
+    // Theme preferences are optional when storage is unavailable.
+  }
+
+  const prefersLightTheme = matchMedia('(prefers-color-scheme: light)').matches;
+  if (savedTheme === 'light' || (!savedTheme && prefersLightTheme)) {
+    body.classList.add('light');
+  }
+
+  updateThemeIcon(body, icon);
+
   toggle.addEventListener('click', () => {
     body.classList.toggle('light');
-    setIcon();
-    try { localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark'); } catch (e) {}
+    updateThemeIcon(body, icon);
+
+    try {
+      const theme = body.classList.contains('light') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+    } catch (error) {
+      // Keep the theme toggle usable when storage is unavailable.
+    }
+  });
+}
+
+function updateThemeIcon(body, icon) {
+  icon.className = body.classList.contains('light')
+    ? 'fas fa-sun'
+    : 'fas fa-moon';
+}
+
+function initializeMenu(menu, toggle) {
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
   });
 
-  // Mobile menu
-  const menu = document.getElementById('menu');
-  document.getElementById('menu-toggle').addEventListener('click', () => menu.classList.toggle('open'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+    });
+  });
+}
 
-  // Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+function initializeRevealAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = el.closest('.hero') ? `${i * 0.1}s` : '0s';
-    io.observe(el);
-  });
 
-  // Active nav link
+  document.querySelectorAll('.reveal').forEach((element, index) => {
+    element.style.transitionDelay = element.closest('.hero')
+      ? `${index * 0.1}s`
+      : '0s';
+    observer.observe(element);
+  });
+}
+
+function initializeSectionNavigation(menu) {
   const links = [...menu.querySelectorAll('a')];
-  const spy = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      links.forEach((link) => {
+        const isCurrentSection = link.getAttribute('href') === `#${entry.target.id}`;
+        link.classList.toggle('active', isCurrentSection);
+      });
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
 
-  // Typing effect
-  const words = ['AI & Data Science Student', 'C Programmer', 'Web Developer', 'Future AI Builder'];
-  const el = document.getElementById('typed');
-  let w = 0, c = 0, del = false;
-  (function tick() {
-    const word = words[w];
-    el.textContent = word.slice(0, c);
-    if (!del && c === word.length) { del = true; return setTimeout(tick, 1400); }
-    if (del && c === 0) { del = false; w = (w + 1) % words.length; }
-    c += del ? -1 : 1;
-    setTimeout(tick, del ? 40 : 80);
-  })();
-});
+  document.querySelectorAll('main section[id]').forEach((section) => {
+    observer.observe(section);
+  });
+}
+
+function initializeTypewriter() {
+  const phrases = [
+    'AI & Data Science Student',
+    'C Programmer',
+    'Web Developer',
+    'Future AI Builder',
+  ];
+  const output = document.getElementById('typed');
+  let phraseIndex = 0;
+  let characterIndex = 0;
+  let isDeleting = false;
+
+  function typeNextCharacter() {
+    const phrase = phrases[phraseIndex];
+    output.textContent = phrase.slice(0, characterIndex);
+
+    if (!isDeleting && characterIndex === phrase.length) {
+      isDeleting = true;
+      setTimeout(typeNextCharacter, 1400);
+      return;
+    }
+
+    if (isDeleting && characterIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+
+    characterIndex += isDeleting ? -1 : 1;
+    setTimeout(typeNextCharacter, isDeleting ? 40 : 80);
+  }
+
+  typeNextCharacter();
+}
