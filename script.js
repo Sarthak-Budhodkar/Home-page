@@ -18,7 +18,6 @@ function initializeTheme(body, toggle, icon) {
   try {
     savedTheme = localStorage.getItem('theme');
   } catch (error) {
-    // Theme preferences are optional when storage is unavailable.
   }
 
   const prefersLightTheme = matchMedia('(prefers-color-scheme: light)').matches;
